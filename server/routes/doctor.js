@@ -107,6 +107,14 @@ router.get('/doc/appointment', docrequireLogin, (req, res) => {
 		});
 });
 
+router.get('/doc/patienthistory/:patientID', docrequireLogin, (req, res) => {
+	Appointment.find({ PatientDetails: { _id: req.params.patientID } }).then(
+		(result) => {
+			res.json({ result });
+		}
+	);
+});
+
 router.put(
 	'/uploadprescription/:appointmentId',
 	docrequireLogin,

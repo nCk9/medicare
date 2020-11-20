@@ -156,3 +156,21 @@ h2 {
 	background-image: linear-gradient(to top, #f0baa3 0%, #a4d9f1 100%);
 	transition: all 250ms;
 }
+
+.gallery12 {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.item12 {
+	width: 30%;
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+
+.item11 {
+	width: 100%;
+	height: 100%;
+	border: 2px solid #e07a52;
+}

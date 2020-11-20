@@ -90,7 +90,10 @@ const DocAppointment = () => {
 	if (appoint.length !== 0) {
 		displayAppointment = appoint.map((a) => {
 			return (
-				<div className="card #f5f5f5 grey lighten-4 appointmentcardDoc">
+				<div
+					className="card #f5f5f5 grey lighten-4 appointmentcardDoc"
+					key={a._id}
+				>
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 						<h5 style={{ color: '#5e35b1' }}>
 							Patient Name:{' '}
