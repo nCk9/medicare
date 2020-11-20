@@ -30,7 +30,11 @@ const Profile = () => {
 						<span style={{ color: '#000000' }}> {state.user.name}</span>
 					</h6>
 					<h6 style={{ color: '#5e35b1' }}>
-						DOB: <span style={{ color: '#000000' }}> {state.user.dob}</span>
+						DOB:{' '}
+						<span style={{ color: '#000000' }}>
+							{' '}
+							{state.user.dob.split('-').reverse().join('-')}
+						</span>
 					</h6>
 					<h6 style={{ color: '#5e35b1' }}>
 						Gender:

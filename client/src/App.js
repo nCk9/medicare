@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useReducer, createContext } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './components/screens/Navbar';
 import './App.css';
 
 import SignIn from './components/screens/Signin';

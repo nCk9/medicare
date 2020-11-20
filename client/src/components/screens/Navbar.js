@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { UserContext } from '../App';
+import { UserContext } from '../../App';
+import M from 'materialize-css';
 
 const NavBar = () => {
 	const history = useHistory();
 	const { state, dispatch } = useContext(UserContext);
+
+	useEffect(() => {
+		var elems = document.querySelectorAll('.sidenav');
+		M.Sidenav.init(elems);
+	}, []);
 
 	const renderList = () => {
 		if (state.user) {
@@ -16,7 +22,8 @@ const NavBar = () => {
 					<Link to="/appointment">Appointment</Link>
 				</li>,
 				<li key="3">
-					<button
+					<Link
+						to="/#"
 						className="btn #c62828 red darken-3"
 						onClick={() => {
 							localStorage.clear();
@@ -26,7 +33,7 @@ const NavBar = () => {
 						style={{ marginRight: '15px' }}
 					>
 						Logout
-					</button>
+					</Link>
 				</li>,
 			];
 		} else if (state.doctor) {
@@ -37,8 +44,9 @@ const NavBar = () => {
 					</Link>
 				</li>,
 				<li key="2">
-					<button
-						className="btn #c62828 red darken-3"
+					<Link
+						to="/#"
+						className="btn #c62828 red lighten-2"
 						onClick={() => {
 							localStorage.clear();
 							dispatch({ type: 'CLEAR' });
@@ -47,15 +55,15 @@ const NavBar = () => {
 						style={{ marginRight: '15px' }}
 					>
 						Logout
-					</button>
+					</Link>
 				</li>,
 			];
 		} else {
 			return [
-				<li key="5">
+				<li key="1">
 					<Link to="/signin">Signin</Link>
 				</li>,
-				<li key="6">
+				<li key="2">
 					<Link to="/signup">Signup</Link>
 				</li>,
 			];
@@ -63,20 +71,27 @@ const NavBar = () => {
 	};
 
 	return (
-		<nav>
-			<div className="nav-wrapper #b2ebf2 cyan lighten-4">
-				<Link
-					to={state.doctor ? '/docappointment' : '/'}
-					className="brand-logo left"
-				>
-					<span style={{ marginLeft: '15px' }}>Medi</span>
-					<span style={{ color: '#e65100' }}>Care</span>
-				</Link>
-				<ul id="nav-mobile" className="right">
-					{renderList()}
-				</ul>
-			</div>
-		</nav>
+		<>
+			<nav>
+				<div className="nav-wrapper #b2ebf2 cyan lighten-4">
+					<Link
+						to={state.doctor ? '/docappointment' : '/'}
+						className="brand-logo"
+					>
+						<span style={{ marginLeft: '15px' }}>Medi</span>
+						<span style={{ color: '#e65100' }}>Care</span>
+					</Link>
+					<Link to="/#" className="sidenav-trigger" data-target="mobile-links">
+						<i className="material-icons">menu</i>
+					</Link>
+					<ul className="right hide-on-med-and-down">{renderList()}</ul>
+				</div>
+			</nav>
+
+			<ul className="sidenav" id="mobile-links">
+				<div className="sidebarelement">{renderList()}</div>
+			</ul>
+		</>
 	);
 };
 

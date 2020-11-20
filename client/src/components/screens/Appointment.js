@@ -47,9 +47,13 @@ const Appointment = () => {
 	if (appoint.length !== 0) {
 		displayAppointment = appoint.map((a) => {
 			return (
-				<div className="card #f5f5f5 grey lighten-4 appointmentcard">
-					<h5 style={{ color: '#5e35b1' }}>
-						Doctor Name: <span style={{ color: '#000000' }}> {a.docName}</span>
+				<div
+					className="card #f5f5f5 grey lighten-4 appointmentcard"
+					key={a._id}
+				>
+					<h5>
+						<span className="docname">Doctor Name: </span>
+						<span style={{ color: '#000000' }}> {a.docName}</span>
 					</h5>
 					<hr />
 					<p style={{ color: '#5e35b1' }}>
@@ -66,19 +70,18 @@ const Appointment = () => {
 						Fee Paid: <span style={{ color: '#000000' }}> {a.docCfee} INR</span>
 					</p>
 					<hr />
-					<div>
+					<div className="appointbutton">
 						<button
-							className="btn waves-effect waves-light #82b1ff blue accent-1"
+							className="btn waves-effect waves-light #82b1ff blue accent-1 bookagain "
 							onClick={() => Dprofile(a.docID)}
 						>
 							Book Again
 							<i className="material-icons right">autorenew</i>
 						</button>
-						<a href={a.pic} target="_blank">
+						<a href={a.pic} target="_blank" className="downloadpres">
 							<button
-								className="btn waves-effect waves-light #82b1ff blue accent-1"
+								className="btn waves-effect waves-light #82b1ff blue accent-1 "
 								style={{
-									marginLeft: '30px',
 									display: a.pic ? 'inline' : 'none',
 								}}
 							>

@@ -174,3 +174,104 @@ h2 {
 	height: 100%;
 	border: 2px solid #e07a52;
 }
+
+.profileImg {
+	width: 180px;
+	height: 180px;
+	border-radius: 10px;
+	margin: 40px auto;
+}
+
+.appointbutton {
+	display: flex;
+	flex-direction: row;
+}
+
+.downloadpres {
+	margin-left: 30px;
+}
+
+.docname {
+	color: #5e35b1;
+}
+
+.uploadpres {
+	margin-top: 17px;
+	height: 45px;
+	margin-left: 6px;
+}
+
+.docappoin {
+	display: flex;
+}
+
+@media screen and (max-width: 540px) {
+	.searchhome {
+		margin: 170px auto;
+		width: 80%;
+	}
+	.mycard {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.profileImg {
+		margin: 40px auto;
+	}
+	.appointmentcard {
+		height: 280px;
+	}
+	.appointmentcardDoc {
+		height: 390px;
+	}
+	.uploadpres {
+		width: 90%;
+		margin: 0px 0px 0px 9px;
+	}
+	.selectdoc {
+		display: none;
+	}
+	.docappoin {
+		display: flex;
+		flex-direction: column;
+	}
+	.bookagain {
+		width: 90%;
+		margin: 2px 0px 6px 9px;
+	}
+	.downloadpres {
+		width: 90%;
+		margin: 2px 0px 6px 9px;
+	}
+	.appointbutton {
+		display: flex;
+		flex-direction: column;
+	}
+	.docname {
+		display: none;
+	}
+	.ratings {
+		display: none;
+	}
+	.dprofilecard {
+		height: 430px;
+	}
+	.gallery12 {
+		display: flex;
+		flex-direction: column;
+	}
+	.item12 {
+		width: 90%;
+		margin: 20px auto 30px auto;
+	}
+	.item11 {
+		width: 100%;
+		height: 100%;
+		border: 2px solid #e07a52;
+	}
+}
+
+@media screen and (max-width: 981px) {
+	.sidebarelement {
+		margin-top: 50px;
+	}
+}

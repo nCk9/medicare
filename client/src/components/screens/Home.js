@@ -47,8 +47,9 @@ const Home = () => {
 					<select
 						ref={searchSpec}
 						onChange={(e) => searchDoctorSpec(e.target.value)}
+						defaultValue={'DEFAULT'}
 					>
-						<option value="" disabled selected>
+						<option value="DEFAULT" disabled>
 							Search by Speciality
 						</option>
 						<option value="Dentist">Dentist</option>
@@ -63,7 +64,7 @@ const Home = () => {
 				</div>
 			</div>
 
-			<div className="imagehome">
+			<div className="imagehome hide-on-med-and-down">
 				<img
 					style={{ width: '700px', height: '650px' }}
 					src={medicine}

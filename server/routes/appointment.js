@@ -28,11 +28,11 @@ router.post('/createappointment', requireLogin, (req, res) => {
 });
 
 router.get('/appointment', requireLogin, (req, res) => {
-	Appointment.find({ PatientDetails: { $in: req.user._id } }).then(
-		(appointment) => {
+	Appointment.find({ PatientDetails: { $in: req.user._id } })
+		.sort('-createdAt')
+		.then((appointment) => {
 			res.json({ appointment });
-		}
-	);
+		});
 });
 
 module.exports = router;

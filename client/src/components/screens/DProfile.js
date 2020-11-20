@@ -11,11 +11,7 @@ const DProfile = () => {
 	const [dprofile, dSetprofile] = useState({});
 	const { state, dispatch } = useContext(UserContext);
 
-	const { name, email, mobile } = state;
-	let contact = parseInt(mobile);
-
 	useEffect(() => {
-		console.log(state);
 		fetch(`/dprofile/${state.docID}`)
 			.then((res) => res.json())
 			.then((data) => {
@@ -119,9 +115,9 @@ const DProfile = () => {
 				});
 			},
 			prefill: {
-				name,
-				email,
-				contact,
+				name: state.user.name,
+				email: state.user.email,
+				contact: parseInt(state.user.mobile),
 			},
 			notes: {
 				address: 'Soumya Dey Corporate Office',
@@ -139,12 +135,13 @@ const DProfile = () => {
 
 	if (Object.keys(dprofile).length !== 0) {
 		doctorProfile = (
-			<div class="card #f5f5f5 grey lighten-4 dprofilecard">
-				<div class="position">
+			<div className="card #f5f5f5 grey lighten-4 dprofilecard">
+				<div className="position">
 					<h5 style={{ color: '#1a237e' }}>{dprofile.name}</h5>
 					<p>
-						ratings: {dprofile.ratings}
-						<i class="material-icons">grade</i>
+						<span className="ratings">ratings: </span>
+						{dprofile.ratings}
+						<i className="material-icons">grade</i>
 					</p>
 				</div>
 				<hr />
@@ -167,11 +164,11 @@ const DProfile = () => {
 				</p>
 				<hr />
 				<button
-					class="btn waves-effect waves-light #82b1ff blue accent-1"
+					className="btn waves-effect waves-light #82b1ff blue accent-1"
 					onClick={state.user ? displayRazorpay : () => history.push('/signup')}
 				>
 					{state.user ? 'Book Now' : 'Signup to Book'}
-					<i class="material-icons right">send</i>
+					<i className="material-icons right">send</i>
 				</button>
 			</div>
 		);

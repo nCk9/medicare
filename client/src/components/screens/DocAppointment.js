@@ -96,7 +96,7 @@ const DocAppointment = () => {
 				>
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 						<h5 style={{ color: '#5e35b1' }}>
-							Patient Name:{' '}
+							<span className="selectdoc">Patient Name:</span>{' '}
 							<span
 								style={{ color: '#000000', cursor: 'pointer' }}
 								onClick={() => handleNameClick(a.PatientDetails._id)}
@@ -108,7 +108,8 @@ const DocAppointment = () => {
 						<h5
 							style={{ color: '#5e35b1', display: a.pic ? 'inline' : 'none' }}
 						>
-							Prescription Uploaded
+							<span className="selectdoc">Prescription </span>
+							Uploaded
 						</h5>
 					</div>
 					<hr />
@@ -135,10 +136,10 @@ const DocAppointment = () => {
 						</span>
 					</p>
 					<hr />
-					<div style={{ display: 'flex' }}>
+					<div className="docappoin">
 						<div className="file-field input-field">
 							<div className="btn #82b1ff blue accent-1">
-								<span>Select Document</span>
+								Select <span className="selectdoc">Document</span>
 								<input
 									type="file"
 									onChange={(e) => setImage(e.target.files[0])}
@@ -149,8 +150,7 @@ const DocAppointment = () => {
 							</div>
 						</div>
 						<button
-							className="btn waves-effect waves-light #82b1ff blue accent-1"
-							style={{ marginTop: '17px', height: '45px', marginLeft: '6px' }}
+							className="btn waves-effect waves-light #82b1ff blue accent-1 uploadpres"
 							onClick={() => handleClick(a._id)}
 						>
 							Upload Prescription

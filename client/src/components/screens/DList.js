@@ -14,7 +14,6 @@ const DList = () => {
 	const handleClick = (d) => {
 		dispatch({ type: 'DOCID', payload: d });
 		history.push(`/dprofile/${d}`);
-		console.log(state);
 	};
 
 	useEffect(() => {
@@ -59,7 +58,8 @@ const DList = () => {
 				<div className="position ">
 					<h5 style={{ color: '#1a237e' }}>{d.name}</h5>
 					<p>
-						ratings: {d.ratings} <i class="material-icons">grade</i>
+						<span className="ratings">ratings: </span> {d.ratings}{' '}
+						<i className="material-icons">grade</i>
 					</p>
 				</div>
 				<hr />
