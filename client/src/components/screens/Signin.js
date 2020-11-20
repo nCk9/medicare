@@ -38,7 +38,11 @@ const SignIn = () => {
 						html: 'signedin success',
 						classes: '#43a047 green darken-1',
 					});
-					history.push('/profile');
+					if (state.docID) {
+						history.push(`/dprofile/${state.docID}`);
+					} else {
+						history.push('/profile');
+					}
 				}
 			})
 			.catch((err) => {

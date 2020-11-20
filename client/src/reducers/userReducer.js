@@ -5,12 +5,19 @@ export const initialState = {
 export const reducer = (state, action) => {
 	if (action.type === 'USER') {
 		return {
+			...state,
 			user: action.payload,
 		};
 	}
 	if (action.type === 'DOCTOR') {
 		return {
 			doctor: action.payload,
+		};
+	}
+	if (action.type === 'PATIENTIDFORHISTORY') {
+		return {
+			...state,
+			patientIdForHistory: action.payload,
 		};
 	}
 	if (action.type === 'CLEAR') {

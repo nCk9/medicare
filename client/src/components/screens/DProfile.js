@@ -15,6 +15,7 @@ const DProfile = () => {
 	let contact = parseInt(mobile);
 
 	useEffect(() => {
+		console.log(state);
 		fetch(`/dprofile/${state.docID}`)
 			.then((res) => res.json())
 			.then((data) => {
@@ -167,9 +168,9 @@ const DProfile = () => {
 				<hr />
 				<button
 					class="btn waves-effect waves-light #82b1ff blue accent-1"
-					onClick={displayRazorpay}
+					onClick={state.user ? displayRazorpay : () => history.push('/signup')}
 				>
-					Book Now
+					{state.user ? 'Book Now' : 'Signup to Book'}
 					<i class="material-icons right">send</i>
 				</button>
 			</div>

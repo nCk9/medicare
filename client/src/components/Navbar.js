@@ -7,7 +7,6 @@ const NavBar = () => {
 	const { state, dispatch } = useContext(UserContext);
 
 	const renderList = () => {
-		console.log(state);
 		if (state.user) {
 			return [
 				<li key="1">

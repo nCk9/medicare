@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import M from 'materialize-css';
 
+import { UserContext } from '../../App';
+
 const DocAppointment = () => {
+	const history = useHistory();
+	const { state, dispatch } = useContext(UserContext);
+
 	const [appoint, setAppoint] = useState([]);
 	const [fetched, setFetched] = useState(false);
 	const [image, setImage] = useState('');
@@ -17,6 +23,11 @@ const DocAppointment = () => {
 			.then((a) => setAppoint(a.appointment))
 			.then((res) => setFetched(true));
 	}, []);
+
+	const handleNameClick = (patientId) => {
+		dispatch({ type: 'PATIENTIDFORHISTORY', payload: patientId });
+		history.push('/patienthistory');
+	};
 
 	const handleClick = (id) => {
 		const data = new FormData();
@@ -83,7 +94,13 @@ const DocAppointment = () => {
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 						<h5 style={{ color: '#5e35b1' }}>
 							Patient Name:{' '}
-							<span style={{ color: '#000000' }}> {a.PatientDetails.name}</span>
+							<span
+								style={{ color: '#000000', cursor: 'pointer' }}
+								onClick={() => handleNameClick(a.PatientDetails._id)}
+							>
+								{' '}
+								{a.PatientDetails.name}
+							</span>
 						</h5>
 						<h5
 							style={{ color: '#5e35b1', display: a.pic ? 'inline' : 'none' }}

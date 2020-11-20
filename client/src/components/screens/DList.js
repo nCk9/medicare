@@ -14,6 +14,7 @@ const DList = () => {
 	const handleClick = (d) => {
 		dispatch({ type: 'DOCID', payload: d });
 		history.push(`/dprofile/${d}`);
+		console.log(state);
 	};
 
 	useEffect(() => {
@@ -22,6 +23,7 @@ const DList = () => {
 				.then((res) => res.json())
 				.then((data) => {
 					setDlist(data.dlist);
+					dispatch({ type: 'DSEARCHSPEC', payload: null });
 				})
 				.then((res) => setFetched(true));
 		} else {
